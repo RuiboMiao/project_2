@@ -1,0 +1,12 @@
+.list {
+	list-style-type: none;
+}
+
+.list > li {
+	margin: 10px;
+}
+
+.list > li > a {
+	width: 150px;
+	text-align: center;
+}

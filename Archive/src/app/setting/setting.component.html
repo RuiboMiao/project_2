@@ -1,0 +1,13 @@
+<section class="w-100 px-2 d-flex justify-content-center pb-4">
+  <div style="width: 22rem;">
+    <h1>Account Settings</h1>
+    <div *ngIf="isUpdated" class="alert alert-primary" role="alert">Your new nickname is updated!</div>
+    <form (ngSubmit)="saveNickname()">
+      <div class="mb-3">
+        <label for="nickname" class="form-label">Nickname</label>
+        <input type="email" class="form-control" id="nickname" name="nickname" placeholder="nickname" [(ngModel)]="nickname">
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Update</button>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+<header class="navbar navbar-expand bg-body-tertiary bg-primary sticky-top" data-bs-theme="dark">
+  <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap justify-content-between">
+    <a class="navbar-brand" [routerLink]="[checkLoggedIn() ? '/main' : '/login']">My Store</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="route == '/main'" aria-current="page" [routerLink]="[checkLoggedIn() ? '/main' : '/login']">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="route == '/cart'" [class.disabled]="!checkLoggedIn()" [routerLink]="['/cart']">Chart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="route == '/settings'"  [class.disabled]="!checkLoggedIn()" [routerLink]="['/settings']">Settings</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        <a *ngIf="checkLoggedIn()" [routerLink]="['/logout']" class="button fancy-button" ><i class="material-icons">logout</i></a>
+        <a *ngIf="!checkLoggedIn()" [routerLink]="['/login']" class="button fancy-button"><i class="material-icons">login</i></a>
+      </span>
+    </div>
+  </nav>
+</header>

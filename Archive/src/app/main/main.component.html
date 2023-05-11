@@ -1,0 +1,30 @@
+<section class="w-100 px-2 d-flex justify-content-center">
+	<div class="w-100">
+		<h1>
+			Welcome to Shopping Mall<br/>
+		</h1>
+
+		<h3>
+			You are logged in as <br />
+			Username: {{username}} <span *ngIf="nickname.length > 0"><br/>Nickname: {{nickname}}</span>	
+		</h3>
+
+
+		<div class="container overflow-hidden text-center">
+			<div class="row gx-4 gy-4">
+				<div class="col-6 col-md-3">
+					<a class="button fancy-button-reverse w-100 p-3" [routerLink]="['/settings']"><i class="material-icons mb-2">settings</i>Settings</a>
+				</div>
+				<div class="col-6 col-md-3">
+					<a class="button fancy-button-reverse w-100 p-3" [routerLink]="['/info']"><i class="material-icons mb-2">list_alt</i>View Products</a>
+				</div>
+				<div class="col-6 col-md-3">
+					<a class="button fancy-button-reverse w-100 p-3" [routerLink]="['/cart']"><i class="material-icons mb-2">shopping_cart</i>Cart</a>
+				</div>
+				<div class="col-6 col-md-3">
+					<a class="button fancy-button-reverse w-100 p-3" [routerLink]="['/logout']"><i class="material-icons mb-2">logout</i>Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

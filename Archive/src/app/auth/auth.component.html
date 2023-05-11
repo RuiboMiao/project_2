@@ -1,0 +1,19 @@
+<section class="w-100 px-2 d-flex justify-content-center pb-4">
+  <div style="width: 22rem;">
+    <h1>Welcome! Please Login!</h1>
+    <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+      {{ errorMessage }}
+    </div>
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="email" class="form-control" id="username" name="username" aria-describedby="usernameHelp" placeholder="Username" [(ngModel)]="username">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="password">
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+  </div>
+</section>

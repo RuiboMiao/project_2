@@ -1,0 +1,26 @@
+<section class="w-100 px-2 d-flex justify-content-center pb-4">
+  <div class="container overflow-hidden px-0">
+    <h2>Products</h2>
+    <div *ngIf="addedToCart" class="alert alert-success mt-3">
+      Product added to cart!
+    </div>
+
+    <div class="row gx-4 gy-4">
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let product of products; index as productId">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title mb-2">
+              <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
+                {{ product.name }}
+              </a>
+            </h4>
+            <h5 class="card-subtitle mb-2 text-body-secondary" style="height: 40px">{{ product.description }}</h5>
+            <button type="button" class="btn btn-primary w-100 btn-sm" (click)="addToCart(productId)">
+              Add To Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

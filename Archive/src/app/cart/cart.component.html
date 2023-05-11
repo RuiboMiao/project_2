@@ -1,0 +1,58 @@
+<section class="container overflow-hidden">
+  <div class="row gx-4">
+    <!-- chart items -->
+    <div class="col-12 col-lg-8 mb-4">
+      <div *ngIf="items.length === 0">No items in cart</div>
+      <div class="row g-4 ">
+        <div class="col-12 col-sm-6 col-md-4" *ngFor="let item of items; index as itemId">
+          <div class="card">
+            <div class="card-body  position-relative">
+              <button type="button" class="btn-close position-absolute" style="top: 16px;right:16px;" aria-label="Close" (click)="removeItem(itemId)" [disabled]="isDisabled"></button>
+              <h4 class="card-title mb-2">{{ item.product.name }}</h4>
+              <p>Price: ${{ item.product.price }}</p>
+              <p>Sub total: ${{ item.quantity * item.product.price }}</p>
+              <div class="mb-3">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input type="number" class="form-control" id="quantity" name="quantity"  placeholder="Quantity" [(ngModel)]="item.quantity" min="1" [disabled]="isDisabled">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4">
+      <form (ngSubmit)="pay()">
+        <h2>Payment Details</h2>
+        <div *ngIf="hasError" class="text-danger">
+          {{ errorMessage }}
+        </div>
+        <div class="mb-2">
+          <label for="card-holder-name" class="form-label">Card Holder Name *</label>
+          <input type="text" class="form-control" id="card-holder-name" name='cardHolderName' [(ngModel)]="cardHolderName" [disabled]="isDisabled">
+          <div *ngIf="!cardHolderName && isSubmitted" class="text-danger">Card Holder Name is required</div>
+        </div>
+        <div class="mb-2">
+          <label for="card-number" class="form-label">Card Number *:</label>
+          <input type="text" class="form-control" id="card-number" name='cardNumber' [(ngModel)]="cardNumber" [disabled]="isDisabled">
+          <div *ngIf="!cardNumber && isSubmitted" class="text-danger">Card Number is required</div>
+        </div>
+        <div class="mb-2">
+          <label for="expiry-date" class="form-label">Expiry Date *:</label>
+          <input type="text" class="form-control" id="expiry-date" name='expiryDate' [(ngModel)]="expiryDate" [disabled]="isDisabled">
+          <div *ngIf="!expiryDate && isSubmitted" class="text-danger">Expiry Date is required</div>
+        </div>
+        <div class="mb-2">
+          <label for="cvv" class="form-label">CVV *:</label>
+          <input type="text" class="form-control" id="cvv" name='cvv' [(ngModel)]="cvv" [disabled]="isDisabled">
+          <div *ngIf="!cvv && isSubmitted" class="text-danger">CVV is required</div>
+        </div>
+        <div class="mb-4">
+          <label for="address" class="form-label">address *:</label>
+          <input type="text" class="form-control" id="address" name='address' [(ngModel)]="address" [disabled]="isDisabled">
+          <div *ngIf="!address && isSubmitted" class="text-danger">Address is required</div>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2 w-100" [disabled]="isSubmitted">Finalize Payment</button>
+      </form>
+    </div>
+  </div>
+</section>
